@@ -4,7 +4,6 @@ const vm = new Vue({
     produtos: [],
     produto: false,
     carrinho: [],
-    carrinhoTotal: 0,
   },
   filters: {
     numeroPreco(valor) {
@@ -12,6 +11,15 @@ const vm = new Vue({
         style: 'currency',
         currency: 'BRL',
       });
+    },
+  },
+  computed: {
+    carrinhoTotal() {
+      return this.carrinho.length
+        ? this.carrinho.reduce((total, item) => {
+          return total + item.preco
+        }, 0)
+        : 0;
     },
   },
   methods: {
@@ -41,6 +49,11 @@ const vm = new Vue({
     },
     adicionarItem() {
       this.produto.estoque--;
+      const { id, nome, preco } = this.produto;
+      this.carrinho.push({ id, nome, preco });
+    },
+    removerItem(index) {
+      this.carrinho.splice(index, 1);
     },
   },
   created() {
