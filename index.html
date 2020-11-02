@@ -13,6 +13,10 @@
   </head>
   <body>
     <div id="app">
+      <header class="header">
+        <img src="./assets/techno.svg" alt="Techno" class="logo">
+        <div class="carrinho_menu">{{carrinhoTotal}} | </div>
+      </header>
 
       <section class="modal" v-if="produto" @click="fecharModal">
         <div class="modal_container">
