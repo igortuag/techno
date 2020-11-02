@@ -170,6 +170,11 @@ body {
   font-family: 'Noto Serif';
 }
 
+.modal_btn.esgotado {
+  cursor: default;
+  background: #808080;
+}
+
 .modal_btn:active {
   background: #808080;
 }
